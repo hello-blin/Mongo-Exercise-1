@@ -28,8 +28,12 @@ const Course = mongoose.model("Course", courseSchema);
 // Display them on console
 
 async function getCourse() {
-  const course = await Course.find();
+  const courses = await Course.find({isPublished: true}).sort({name: 1}).select({name: 1, author:1});
+  console.log(courses);
 }
+
+getCourse();
+
 
 app.listen(3000, () => {
   console.log("Connected to 3000");
