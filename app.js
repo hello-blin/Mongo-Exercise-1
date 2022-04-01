@@ -27,13 +27,36 @@ const Course = mongoose.model("Course", courseSchema);
 // Pick only their name and author,
 // Display them on console
 
-async function getCourse() {
-  const courses = await Course.find({isPublished: true}).sort({name: 1}).select({name: 1, author:1});
-  console.log(courses);
-}
+// async function getCourse() {
+//   const courses = await Course.find({isPublished: true, tags: 'backend'}).sort({name: 1}).select({name: 1, author:1})
+//   console.log(courses);
+// }
 
-getCourse();
+// getCourse();
 
+//EXERCISE 1
+
+//EXERCISE 2
+
+//Get all the published Backend and Frontend Courses,
+//Sort them by their price in a descending order,
+//pick only name and author,
+//Display them on console
+
+// async function getCourses() {
+//   const courses = await Course.find({
+//     isPublished: true,
+//     tags: { $in: ["backend", "frontend"] },
+//   })
+//     .sort("-price")
+//     .select("author name");
+
+//   console.log(courses);
+// }
+
+// getCourses();
+
+//EXERCISE 2
 
 app.listen(3000, () => {
   console.log("Connected to 3000");
