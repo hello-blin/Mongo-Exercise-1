@@ -63,19 +63,53 @@ const Course = mongoose.model("Course", courseSchema);
 // Get all the published courses that costs more than 15$ or more, OR
 // They contain the word 'by' in their title
 
-async function getCourses() {
-  const result = await Course.find({
-    isPublished: true,
-    price: { $gte: 15 },
-  })
-    .or({ title: /.* by *./ })
-    .select("name author price");
-  console.log(result);
-}
+// async function getCourses() {
+//   const result = await Course.find({
+//     isPublished: true,
+//     price: { $gte: 15 },
+//   })
+//     .or({ title: /.* by *./ })
+//     .select("name author price");
+//   console.log(result);
+// }
 
-getCourses();
+// getCourses();
 
 //EXERCISE 3
+
+// UPDATING COURSES
+
+// async function updateCourse(id) {
+//   const course = await Course.findOneAndUpdate(
+//     id,
+//     {
+//       $set: {
+//         name: "Kurs",
+//         author: "Une",
+//         isPublished: true,
+//       },
+//     },
+//     { new: true }
+//   );
+//   console.log(course);
+// }
+
+// updateCourse("5a68fde3f09ad7646ddec17e");
+
+// UPDATING COURSES
+
+
+//DELETE COURSE 
+
+// async function deleteCourse(id) {
+//   const course = await Course.findOneAndRemove(id);
+//   !course ? console.log('Cannot find a course by that ID'): console.log(course);
+  
+// }
+// deleteCourse('5a6900fff467be65019a9001')
+
+//DELETE COURSE 
+
 
 app.listen(3000, () => {
   console.log("Connected to 3000");
