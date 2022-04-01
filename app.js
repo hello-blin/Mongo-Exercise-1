@@ -58,6 +58,25 @@ const Course = mongoose.model("Course", courseSchema);
 
 //EXERCISE 2
 
+//EXERCISE 3
+
+// Get all the published courses that costs more than 15$ or more, OR
+// They contain the word 'by' in their title
+
+async function getCourses() {
+  const result = await Course.find({
+    isPublished: true,
+    price: { $gte: 15 },
+  })
+    .or({ title: /.* by *./ })
+    .select("name author price");
+  console.log(result);
+}
+
+getCourses();
+
+//EXERCISE 3
+
 app.listen(3000, () => {
   console.log("Connected to 3000");
 });
